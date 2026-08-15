@@ -3,8 +3,11 @@ import {
   login,
   createUser,
   getUsers,
+  getSingleUser,
   getMyProfile,
-  updatePermissions,
+  editUser,
+  changeMyPassword,
+  resetUserPassword,
   removeUser,
 } from "../controller/user.controller.js";
 import {
@@ -16,16 +19,20 @@ import {
 const router = express.Router();
 
 router.post("/login", login);
+
 router.get("/me", protect, getMyProfile);
+router.put("/me/password", protect, changeMyPassword);
 
 router.post("/", protect, isAdmin, checkPageAccess("users"), createUser);
 router.get("/", protect, isAdmin, checkPageAccess("users"), getUsers);
+router.get("/:id", protect, isAdmin, checkPageAccess("users"), getSingleUser);
+router.put("/:id", protect, isAdmin, checkPageAccess("users"), editUser);
 router.put(
-  "/:id/permissions",
+  "/:id/password",
   protect,
   isAdmin,
   checkPageAccess("users"),
-  updatePermissions,
+  resetUserPassword,
 );
 router.delete("/:id", protect, isAdmin, checkPageAccess("users"), removeUser);
 

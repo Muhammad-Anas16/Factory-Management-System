@@ -13,13 +13,13 @@ export const protect = (req, res, next) => {
 
   try {
     const decoded = verifyToken(token);
-    const user = findUserById(decoded);
+    const user = findUserById(decoded.id);
 
     if (!user) {
       return errorResponse(res, "User No Longer Exist", null, 401);
     }
 
-    if (!user.status !== "active") {
+    if (user.status !== "active") {
       return errorResponse(res, "Account is Disable", null, 403);
     }
 
@@ -28,7 +28,7 @@ export const protect = (req, res, next) => {
     next();
   } catch (error) {
     return errorResponse(
-      req,
+      res,
       "Invalid or Token is Expired",
       error.message,
       401,

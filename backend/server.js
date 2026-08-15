@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import { initializeDatabase } from "./src/consfig/initDatabase.js";
+import { initializeDatabase } from "./src/config/initDatabase.js";
 import userRoutes from "./src/routes/user.routes.js";
 
 dotenv.config();
@@ -15,8 +15,11 @@ initializeDatabase();
 
 app.use("/api/users", userRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Factory Management System API is running...");
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is online",
+  });
 });
 
 const PORT = process.env.PORT || 5000;
