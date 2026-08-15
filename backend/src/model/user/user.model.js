@@ -1,7 +1,7 @@
 import db from "../../consfig/db.js";
 
 export const createUserTable = () => {
-  const sql = ` CREATE TABLE IF NOT EXIST users (
+  const sql = `
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
 
@@ -27,7 +27,7 @@ export const createUserTable = () => {
   console.log("User Table Created Successfully!");
 };
 
-export const createUser = (user) => {
+export const registerUser = (user) => {
   const statment = db.prepare(`
         INSERT INTO users (
         name, username, password, role, allowedPages, canAdd, canEdit, canDelete, status

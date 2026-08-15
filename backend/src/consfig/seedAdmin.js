@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { createUser, findUserByUsername } from "../model/user/user.model.js";
+import { registerUser, findUserByUsername } from "../model/user/user.model.js";
 
 export const seedDefaultAdmin = () => {
   const existingAdmin = findUserByUsername(process.env.ADMIN_USERNAME);
@@ -19,7 +19,7 @@ export const seedDefaultAdmin = () => {
     "settings",
   ]);
 
-  createUser({
+  registerUser({
     name: process.env.ADMIN_NAME || "Super Admin",
     username: process.env.ADMIN_USERNAME,
     password: hashedPassword,
