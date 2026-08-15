@@ -3,7 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import { initializeDatabase } from "./src/config/initDatabase.js";
-import userRoutes from "./src/routes/user.routes.js";
+import userRoutes from "./src/routes/user/user.routes.js";
+import workerRoutes from "./src/routes/worker/worker.routes.js";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 initializeDatabase();
 
 app.use("/api/users", userRoutes);
+app.use("/api/workers", workerRoutes);
 
 app.get("/api/health", (req, res) => {
   res.status(200).json({

@@ -3,11 +3,11 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 
-const _filename = fileURLToPath(import.meta.url);
-const _dirname = path.dirname(_filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const dbFolder = path.join(_dirname, "../database");
-if (!fs.existsSync) {
+const dbFolder = path.join(__dirname, "../database");
+if (!fs.existsSync(dbFolder)) {
   fs.mkdirSync(dbFolder, { recursive: true });
 }
 

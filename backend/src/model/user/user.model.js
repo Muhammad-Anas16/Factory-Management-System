@@ -31,7 +31,7 @@ export const registerUser = (user) => {
     user.username,
     user.password,
     user.role || "user",
-    JSON.stringify(user.allowedPages || []), // 🔧 fix: array ko JSON string me convert kiya
+    JSON.stringify(user.allowedPages || []),
     user.canAdd ? 1 : 0,
     user.canEdit ? 1 : 0,
     user.canDelete ? 1 : 0,
@@ -69,7 +69,7 @@ export const updateUser = (user) => {
         status = ?,
         updatedAt = CURRENT_TIMESTAMP
     WHERE id = ?
-  `); // 🔧 fix: parens hataye, WHERE clause bahar nikala
+  `);
   return statement.run(
     user.name,
     user.username,
@@ -79,14 +79,14 @@ export const updateUser = (user) => {
     user.canEdit ? 1 : 0,
     user.canDelete ? 1 : 0,
     user.status || "active",
-    user.id, // 🔧 fix: id missing thi, ab add ki
+    user.id,
   );
 };
 
 export const updateUserPassword = (id, hashedPassword) => {
   const statement = db.prepare(`
     UPDATE users SET password = ?, updatedAt = CURRENT_TIMESTAMP WHERE id = ?
-  `); // 🔧 fix: WHERE id = ? (column name likha)
+  `);
   return statement.run(hashedPassword, id);
 };
 

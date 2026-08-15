@@ -9,12 +9,12 @@ import {
   changeMyPassword,
   resetUserPassword,
   removeUser,
-} from "../controller/user.controller.js";
+} from "../../controller/user/user.controller.js";
 import {
   protect,
   isAdmin,
   checkPageAccess,
-} from "../middleware/auth.middleware.js";
+} from "../../middleware/auth.middleware.js";
 
 const router = express.Router();
 

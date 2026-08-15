@@ -7,9 +7,9 @@ import {
   updateUser,
   updateUserPassword,
   deleteUser,
-} from "../model/user/user.model.js";
-import { generateToken } from "../helper/token.helper.js";
-import { successResponse, errorResponse } from "../helper/response.helper.js";
+} from "../../model/user/user.model.js";
+import { generateToken } from "../../helper/token.helper.js";
+import { successResponse, errorResponse } from "../../helper/response.helper.js";
 
 const toSafeUser = (user) => {
   const { password, ...safeUser } = user;
@@ -100,7 +100,6 @@ export const getMyProfile = (req, res) => {
   }
 };
 
-// Admin: role/pages/authority/status ek sath update
 export const editUser = (req, res) => {
   try {
     const { id } = req.params;
@@ -129,7 +128,6 @@ export const editUser = (req, res) => {
   }
 };
 
-// Khud apna password change (purana password verify hoke)
 export const changeMyPassword = (req, res) => {
   try {
     const { oldPassword, newPassword } = req.body;
@@ -152,7 +150,6 @@ export const changeMyPassword = (req, res) => {
   }
 };
 
-// Admin: kisi aur ka password reset (bina purana pata hue)
 export const resetUserPassword = (req, res) => {
   try {
     const { id } = req.params;

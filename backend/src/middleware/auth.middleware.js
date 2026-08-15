@@ -59,7 +59,6 @@ export const checkPageAccess = (pageName) => (req, res, next) => {
   next();
 };
 
-// 4/5/6. Add / Edit / Delete authority check
 export const checkCanAdd = (req, res, next) => {
   if (req.user.role === "admin") return next();
   if (!req.user.canAdd)
