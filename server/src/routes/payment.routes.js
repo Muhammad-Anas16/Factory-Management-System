@@ -1,0 +1,1 @@
+import{Router}from'express';import{list,create}from'../controllers/payment.controller.js';import{requireAuth,requirePermission}from'../middleware/auth.js';const r=Router();r.use(requireAuth);r.get('/',requirePermission('payments','view'),list);r.post('/',requirePermission('payments','create'),create);export default r;

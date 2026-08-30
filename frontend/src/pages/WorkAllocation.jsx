@@ -1,0 +1,6 @@
+import ResourcePage from './ResourcePage';
+import { workApi } from '../api/resources';
+
+export default function WorkAllocation() {
+  return <ResourcePage title="Work Allocation" subtitle="Assign one article to multiple worker users and track quantities." page="work-allocation" api={workApi} fields={[{ name: 'article_id', label: 'Article ID', required: true }, { name: 'user_id', label: 'Worker User ID', required: true }, { name: 'assigned_quantity', label: 'Assigned quantity', type: 'number', required: true }, { name: 'rate', label: 'Rate', type: 'number' }, { name: 'assigned_date', label: 'Assigned date', type: 'date', required: true }, { name: 'status', label: 'Status', type: 'select', options: ['pending', 'in_progress', 'completed', 'paid'] }, { name: 'notes', label: 'Notes', type: 'textarea', full: true }]} columns={[{ key: 'id', label: 'ID' }, { key: 'article_name', label: 'Article' }, { key: 'worker_name', label: 'Worker' }, { key: 'assigned_quantity', label: 'Assigned' }, { key: 'completed_quantity', label: 'Completed' }, { key: 'pending_quantity', label: 'Pending' }, { key: 'rate', label: 'Rate' }, { key: 'status', label: 'Status' }, { key: 'assigned_date', label: 'Assigned' }]} />;
+}

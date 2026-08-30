@@ -1,0 +1,1 @@
+import{Router}from'express';import{backup,list}from'../controllers/backup.controller.js';import{requireAuth,requirePermission}from'../middleware/auth.js';const r=Router();r.use(requireAuth);r.get('/',requirePermission('backup','view'),list);r.post('/',requirePermission('backup','create'),backup);export default r;

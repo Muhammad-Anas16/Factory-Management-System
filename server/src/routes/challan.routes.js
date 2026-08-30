@@ -1,0 +1,1 @@
+import{Router}from'express';import{list,create,get}from'../controllers/challan.controller.js';import{requireAuth,requirePermission}from'../middleware/auth.js';const r=Router();r.use(requireAuth);r.get('/',requirePermission('challans','view'),list);r.get('/:id',requirePermission('challans','view'),get);r.post('/',requirePermission('challans','create'),create);export default r;

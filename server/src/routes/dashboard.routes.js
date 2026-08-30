@@ -1,0 +1,1 @@
+import{Router}from'express';import{dashboard}from'../controllers/dashboard.controller.js';import{requireAuth,requirePermission}from'../middleware/auth.js';const r=Router();r.get('/',requireAuth,requirePermission('dashboard','view'),dashboard);export default r;

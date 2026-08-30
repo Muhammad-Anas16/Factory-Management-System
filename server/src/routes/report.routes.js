@@ -1,0 +1,1 @@
+import{Router}from'express';import{report}from'../controllers/report.controller.js';import{requireAuth,requirePermission}from'../middleware/auth.js';const r=Router();r.get('/',requireAuth,requirePermission('reports','view'),report);export default r;

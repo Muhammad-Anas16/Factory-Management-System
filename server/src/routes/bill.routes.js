@@ -1,0 +1,1 @@
+import{Router}from'express';import{list,create,get}from'../controllers/bill.controller.js';import{requireAuth,requirePermission}from'../middleware/auth.js';const r=Router();r.use(requireAuth);r.get('/',requirePermission('billing','view'),list);r.get('/:id',requirePermission('billing','view'),get);r.post('/',requirePermission('billing','create'),create);export default r;

@@ -1,0 +1,1 @@
+import{Router}from'express';import{payrollSlip}from'../controllers/pdf.controller.js';import{requireAuth,requirePermission}from'../middleware/auth.js';const r=Router();r.get('/payroll/:id',requireAuth,requirePermission('payroll','view'),payrollSlip);export default r;

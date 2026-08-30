@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { list,get,create,update,remove } from '../controllers/user.controller.js';
+import { requireAuth,requirePermission } from '../middleware/auth.js';
+import { uploadUserImage } from '../middleware/upload.js';
+const r=Router(); r.use(requireAuth);
+r.get('/',requirePermission('users','view'),list);
+r.get('/:id',requirePermission('users','view'),get);
+r.post('/',requirePermission('users','create'),uploadUserImage.single('profilePicture'),create);
+r.put('/:id',requirePermission('users','edit'),uploadUserImage.single('profilePicture'),update);
+r.delete('/:id',requirePermission('users','delete'),remove);
+export default r;
